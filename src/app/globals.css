@@ -59,6 +59,90 @@ a {
   width: 100%;
 }
 
+/* Hero section */
+.hero-card {
+  max-width: 1000px;
+  margin: 2rem auto 3rem;
+  padding: 2rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-image {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-word {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
+  color: var(--maincolor);
+  
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  line-height: 1.7;
+ padding-left: 10px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .hero-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 1.5rem 1.25rem;
+  }
+
+  .hero-word {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-badge {
+    align-self: center;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+  }
+}
+
 .categories-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -361,3 +445,451 @@ a {
   }
 
 }
+.hero-card{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.4rem 1rem;
+}
+.hero-image img{
+ border-radius: 20px;
+}
+.hero-card h1{
+  font-size: 20px;
+  position: relative;
+  bottom:300px;
+  text-align: right;
+}
+.ui-card{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.4rem 1rem;
+}
+.ui-card img{
+  width:40%;
+  height:430px;
+  border-radius: 20px;
+  padding-top: 2px;
+}
+.ui-card h1{
+  text-align: center;
+  border-radius: 999px;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
+  color: var(--maincolor);
+}
+.ui-card button{
+  color:var(--maincolor);
+  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 10px;
+  border:none;
+  display: flex;
+  text-align:center ;
+  justify-content: center;
+  margin-top: 30px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(172, 189, 21, 0.824);
+  transition: all 0.3s ease;
+}
+.ui-card button:hover{
+  color:var(--secondcolor);
+  background:var(--maincolor) ;
+  font-size: 22px;
+  padding:12px;
+  
+}
+.ui-card {
+  width: 100%;
+  padding: 40px 60px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* الصورة + النص */
+.ui-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+}
+
+/* الصورة أكبر */
+.ui-image {
+  width: 250px;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(255, 122, 24, 0.35);
+}
+
+.ui-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* النص كله على اليمين */
+.ui-text {
+  flex: 1;
+  text-align: right; /* هنا التعديل */
+}
+
+.hero-badge {
+  font-size: 34px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #555;
+  max-width: 100%;
+}
+
+/* الزرار */
+.ui-button {
+  margin: 0 auto;
+  padding: 18px 50px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(255, 122, 24, 0.45);
+  transition: all 0.3s ease;
+}
+
+.ui-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 50px rgba(255, 122, 24, 0.55);
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .ui-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+  .ui-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-badge {
+    font-size: 28px;
+  }
+
+ /* Section العام */
+.opinion-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* العنوان الرئيسي */
+.opinion-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.opinion-card {
+  display: flex;
+  gap: 24px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opinion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* Avatar */
+.opinion-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 80px;   /* حجم مناسب */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Content (نص + stars) */
+.opinion-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.opinion-header img{
+  border-radius: 20px;
+  width:100%;
+  height: 460px;
+}
+.opinion-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.user-role {
+  font-size: 14px;
+  color: #777;
+  margin: 4px 0 10px;
+}
+
+.opinion-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* Stars */
+.opinion-stars {
+  display: flex;
+  gap: 6px;
+}
+
+.star-icon {
+  color: #ffc107;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .opinion-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .opinion-avatar {
+    margin-bottom: 12px;
+  }
+}
+.newsletter-section {
+  width: 100%;
+  background: linear-gradient(135deg,rgb(249, 238, 238), #f4eec5);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletter-content {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* العنوان */
+.newsletter-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color:var(--maincolor)
+}
+
+/* الوصف */
+.newsletter-description {
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--secondcolor);
+}
+
+/* الفورم */
+.newsletter-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Input */
+.newsletter-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Button */
+.newsletter-button {
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  background: var(--foreground);
+  color: var(--secondcolor);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+  background: #fff;
+  color: var(--maincolor);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter-title {
+    font-size: 28px;
+  }
+
+  .newsletter-description {
+    font-size: 15px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-input {
+    width: 100%;
+  }
+
+  .newsletter-button {
+    width: 100%;
+  }
+}
+.foot-container {
+  width: 100%;
+  background:var(--maincolor);
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 40px 60px;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+/* Logo */
+.foot-logo {
+  border-radius: 10px;
+  object-fit: cover;
+  position: relative;
+  top:50px;
+}
+
+/* Links */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+/* Main Links & Sub Links مع توزيع متساوي */
+.main-links, .sub-links {
+  display: flex;
+  justify-content: space-between; /* المسافة متساوية */
+  gap: 15px;
+}
+
+.main-links a, .sub-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-links a:hover, .sub-links a:hover {
+  color: var(--secondcolor);
+}
+
+/* Social Icons */
+.icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icons a {
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.icons a:hover {
+  color:  var(--secondcolor);
+  transform: translateY(-2px);
+}
+
+/* Footer Bottom */
+.foot-bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .foot-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .main-links, .sub-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .icons {
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
