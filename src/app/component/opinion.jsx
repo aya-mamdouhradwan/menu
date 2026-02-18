@@ -6,17 +6,9 @@ export default function Opinion() {
 
   return (
     <section className="opinion-section">
-      {/* Header */}
-      <div className="opinion-header">
-        <Image
-          src="/food/opinun.jpg"
-          alt="Feedback Banner"
-          width={400}
-          height={300} // صغرنا height
-          className="opinion-banner"
-        />
+  
         <h2 className="opinion-title">What Our Customers Say</h2>
-      </div>
+      
 
       {/* Card */}
       <div className="opinion-card">

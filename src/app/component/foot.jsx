@@ -2,8 +2,10 @@
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
+import { motion } from "framer-motion";
 export default function Foot() {
   return (
+    <motion.div>
     <footer className="foot-container">
       
       {/* Logo */}
@@ -19,34 +21,43 @@ export default function Foot() {
 
       {/* Links */}
       <div className="links">
-        {/* الروابط الأساسية */}
-        <div className="main-links">
-          <a href="#">Home</a>
-          <a href="#">Menu</a>
-          <a href="#">About Us</a>
-          <a href="#">Contact</a>
+        <div className="links1">
+          <a href="#" className="main">Home</a>
+          <div className="sub">
+          <a>Home</a>
+          <a>About Us</a>
+          <a>Our Process</a>
+          <a>Services</a>
+          </div>
         </div>
-        {/* الروابط الفرعية */}
-        <div className="sub-links">
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Our Process</a>
-          <a href="#">Service</a>
-          <a href="#">Blog</a>
-        </div>
-      </div>
+        <div className="links2">
+          <a className="main">Community</a>
+          <div className="sub">
+          <a>Team Plans</a>
+          <a>Refer a Friend</a>
+          <a>Get Cards</a>
+          </div>
 
-      {/* Social Icons */}
-      <div className="icons">
+        </div>
+        <div className="lilnka3">
+          <a className="main">Stay Connected</a>
+        <div className="icons">
         <a href="#"><FaFacebookF /></a>
         <a href="#"><FaTwitter /></a>
         <a href="#"><FaInstagram /></a>
         <a href="#"><FaLinkedinIn /></a>
       </div>
+        </div>
+
+      </div>
+
+      {/* Social Icons */}
+      
 
       {/* Footer Bottom */}
-      <h1 className="foot-bottom">© 2025 Your Company. All rights reserved.</h1>
+      <h1 className="foot-bottom">© 2026 Your Company. All rights reserved.</h1>
     </footer>
+    </motion.div>
   );
 }
 

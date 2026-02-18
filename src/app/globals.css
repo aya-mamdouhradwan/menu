@@ -1,15 +1,28 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --maincolor:rgba(147, 147, 34, 0.993);
 
-  --secondcolor:rgba(5, 5, 203, 0.984);
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+
+  /* Primary */
+  --maincolor: #0f172a;
+
+  /* Accent */
+  --secondcolor: #14b8a6;
+
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
 }
+  
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1120;
+    --foreground: #e2e8f0;
+    --maincolor: #e2e8f0;
+    --secondcolor: #2dd4bf;
+    --card-bg: #111827;
+    --border-color: #1f2937;
   }
 }
 
@@ -377,7 +390,7 @@ a {
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   color: var(--maincolor);
-  font-size: 0.9375rem;
+  font-size: 17px;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -444,6 +457,179 @@ a {
     display: none;
   }
 
+}
+/* Language Switcher - Modern Design */
+.language-switcher {
+  position: relative;
+  z-index: 1000;
+}
+
+.language-switcher-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--maincolor);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--secondcolor);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.language-switcher-button:hover {
+  background: rgba(255, 69, 0, 0.2);
+  border-color: #ff4500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+}
+
+.language-switcher-button:active {
+  transform: translateY(0);
+}
+
+.language-switcher-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.globe-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.language-switcher-button:hover .globe-icon {
+  transform: rotate(15deg);
+}
+
+.language-code {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.chevron-icon {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  animation: slideDown 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-align: right;
+}
+
+.language-option:hover {
+  background: rgba(255, 69, 0, 0.15);
+  transform: translateX(-4px);
+}
+
+.language-option.active {
+  background: rgba(255, 69, 0, 0.25);
+  color: #ff4500;
+  font-weight: 600;
+}
+
+.language-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.language-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.language-name {
+  flex: 1;
+  text-align: right;
+}
+
+.check-icon {
+  color: #ff4500;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Responsive Language Switcher */
+@media (max-width: 768px) {
+  .language-dropdown {
+    right: 0;
+    left: auto;
+    min-width: 160px;
+  }
+  
+  .language-switcher-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .language-code {
+    display: none;
+  }
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #111;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 20px;
+    border-radius: 6px;
+  }
+
+  .menu.open {
+    display: flex;
+  }
 }
 .hero-card{
   flex-direction: column;
@@ -596,83 +782,77 @@ a {
   }
 
  /* Section العام */
+/* ===== Section Background ===== */
 .opinion-section {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  position: relative;
+  padding: 100px 20px;
+  background-image: url("/food/opinun.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
 }
 
-/* العنوان الرئيسي */
-.opinion-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #222;
-  text-align: center;
-  margin-bottom: 20px;
+.opinion-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 52, 91, 0.75);
+  z-index: 0;
 }
 
-/* Card */
+.opinion-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Title ===== */
+.opinion-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--secondcolor);
+  text-align: center;
+}
+
+/* ===== Cards ===== */
 .opinion-card {
-  display: flex;
-  gap: 24px;
-  background: #fff;
+  max-width: 700px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
   border-radius: 20px;
-  padding: 20px 24px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
 }
 
 .opinion-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  transform: translateY(-8px);
 }
 
 /* Avatar */
 .opinion-avatar {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .avatar-img {
-  width: 80px;   /* حجم مناسب */
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* Content (نص + stars) */
-.opinion-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.opinion-header img{
-  border-radius: 20px;
-  width:100%;
-  height: 460px;
-}
-.opinion-content h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-  color: #222;
-}
-
-.user-role {
-  font-size: 14px;
-  color: #777;
-  margin: 4px 0 10px;
-}
-
+/* Text */
 .opinion-text {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
-  color: #555;
-  margin-bottom: 12px;
+  color: #334155;
+  margin-bottom: 15px;
 }
 
 /* Stars */
@@ -682,25 +862,22 @@ a {
 }
 
 .star-icon {
-  color: #ffc107;
-  font-size: 18px;
+  color: #fbbf24;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .opinion-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .opinion-section {
+    padding: 70px 20px;
   }
 
-  .opinion-avatar {
-    margin-bottom: 12px;
+  .opinion-card {
+    padding: 20px;
   }
 }
+
 .newsletter-section {
   width: 100%;
-  background: linear-gradient(135deg,rgb(249, 238, 238), #f4eec5);
   padding: 60px 20px;
   display: flex;
   justify-content: center;
@@ -741,6 +918,8 @@ a {
   flex-wrap: wrap;
 }
 
+
+
 /* Input */
 .newsletter-input {
   flex: 1;
@@ -750,6 +929,11 @@ a {
   border: none;
   font-size: 16px;
   outline: none;
+}
+.newsletter-input:hover{
+  outline: none;
+  border-color: var(--secondcolor);
+  box-shadow: 10px 10px 15px var(--secondcolor);
 }
 
 /* Button */
@@ -766,7 +950,7 @@ a {
 }
 
 .newsletter-button:hover {
-  background: #fff;
+  background: var(--secondcolor);
   color: var(--maincolor);
   transform: translateY(-2px);
 }
@@ -796,7 +980,7 @@ a {
 }
 .foot-container {
   width: 100%;
-  background:var(--maincolor);
+  background: linear-gradient(120deg,var(--secondcolor), var(--maincolor));
   color: #fff;
   display: flex;
   flex-wrap: wrap;
@@ -807,80 +991,117 @@ a {
   font-family: 'Poppins', sans-serif;
   position: relative;
 }
-
-
-/* Logo */
-.foot-logo {
-  border-radius: 10px;
-  object-fit: cover;
-  position: relative;
-  top:50px;
+/* ===== Footer Layout ===== */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px; /* مسافة بين الصورة واللينكات */
+  padding: 60px;
+  background: var(--maincolor);
+  color: #fff;
+  flex-wrap: wrap;
 }
 
-/* Links */
+/* ===== Logo Side ===== */
+.foot-ph {
+  flex: 0 0 auto;
+}
+
+.foot-logo {
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 40px;
+  margin-top: 26px;
+}
+
+/* ===== Links Side ===== */
 .links {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 أعمدة متساوية */
+  gap: 60px; /* مسافات متساوية بين الأعمدة */
+}
+
+/* كل عمود */
+.links1,
+.links2,
+.lilnka3 {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  flex: 1;
 }
 
-/* Main Links & Sub Links مع توزيع متساوي */
-.main-links, .sub-links {
+/* ===== Main Title ===== */
+.main {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--maincolor);
+  position: relative;
+}
+
+/* ===== Sub Links ===== */
+.sub {
   display: flex;
-  justify-content: space-between; /* المسافة متساوية */
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.main-links a, .sub-links a {
-  color: #fff;
+.sub a {
+  color: #cbd5e1;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 15px;
+  transition: 0.3s ease;
 }
 
-.main-links a:hover, .sub-links a:hover {
+.sub a:hover {
   color: var(--secondcolor);
+  transform: translateX(6px);
 }
-
-/* Social Icons */
+.foot-bottom{
+  color:var(--secondcolor);
+  position: relative;
+  justify-content: center;
+  font-size: 14px;
+  margin-top: 70px;
+}
+/* ===== Social Icons ===== */
 .icons {
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .icons a {
+  width: 38px;
+  height: 38px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   color: #fff;
-  font-size: 18px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .icons a:hover {
-  color:  var(--secondcolor);
-  transform: translateY(-2px);
+  background: var(--secondcolor);
+  transform: translateY(-4px);
 }
 
-/* Footer Bottom */
-.foot-bottom {
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: #aaa;
-}
-
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .foot-container {
+  .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 50px;
   }
 
-  .main-links, .sub-links {
-    flex-direction: column;
-    gap: 10px;
+  .links {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .icons {

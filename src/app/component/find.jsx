@@ -1,9 +1,11 @@
 'use client';
 import Image from "next/image";
 
+import { motion } from "framer-motion";
 
 export default function Find(){
     return(
+        <motion.div>
         <div className="ui-card">
             
             <div className="ui-h1">
@@ -42,7 +44,7 @@ export default function Find(){
             <hr/>
            
         </div>
-
+        </motion.div>
 
 
     );

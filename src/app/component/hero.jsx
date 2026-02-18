@@ -1,7 +1,10 @@
+'use client';
 import Image from "next/image";
 
+import { motion } from "framer-motion";
 export default function Hero() {
   return (
+    <motion.div>
     <section className="hero-card">
       <div className="hero-image">
         <Image
@@ -27,5 +30,6 @@ export default function Hero() {
         
       </div>
     </section>
+    </motion.div>
   );
 }
