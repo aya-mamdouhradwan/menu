@@ -422,6 +422,14 @@ a {
   opacity: 0.8;
 }
 
+/* Keep navbar layout LTR even on Arabic (RTL) pages */
+html[dir="rtl"] .navbar,
+html[dir="rtl"] .navbar-container,
+html[dir="rtl"] .navbar .menu,
+html[dir="rtl"] .navbar .icons {
+  direction: ltr;
+}
+
 @media (max-width: 768px) {
   .navbar .menu {
     position: absolute;
