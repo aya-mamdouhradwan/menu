@@ -1,14 +1,14 @@
 'use client';
 import Image from "next/image";
 import { FaStar } from 'react-icons/fa';
+import { useTranslations } from "next-intl";
 
 export default function Opinion() {
+  const t = useTranslations("opinion");
 
   return (
     <section className="opinion-section">
-  
-        <h2 className="opinion-title">What Our Customers Say</h2>
-      
+      <h2 className="opinion-title">{t("title")}</h2>
 
       {/* Card */}
       <div className="opinion-card">
@@ -16,18 +16,18 @@ export default function Opinion() {
           <img
             src="https://i.pravatar.cc/150?img=5"
             alt="User Avatar"
-            width={50} // صغرنا الحجم
-            height={5}
+            width={50}
+            height={50}
             className="avatar-img"
           />
           <div className="user-info">
-            <h3>Sarah Johnson</h3>
-            <p>Food Enthusiast</p>
+            <h3>{t("user1Name")}</h3>
+            <p>{t("user1Role")}</p>
           </div>
         </div>
 
         <p className="opinion-text">
-          “I absolutely loved the dishes here! The flavors are authentic and the service is outstanding. Highly recommend to everyone!”
+          {t("user1Text")}
         </p>
 
         <div className="opinion-stars">
@@ -35,7 +35,6 @@ export default function Opinion() {
             <FaStar key={i} className="star-icon" />
           ))}
         </div>
-
       </div>
 
       {/* Card 2 */}
@@ -49,13 +48,13 @@ export default function Opinion() {
             className="avatar-img"
           />
           <div className="user-info">
-            <h3>Michael Brown</h3>
-            <p>Chef & Blogger</p>
+            <h3>{t("user2Name")}</h3>
+            <p>{t("user2Role")}</p>
           </div>
         </div>
 
         <p className="opinion-text">
-          “A must-visit restaurant! Every meal feels like a celebration. The ambience is cozy and perfect for family dinners.”
+          {t("user2Text")}
         </p>
 
         <div className="opinion-stars">
@@ -63,9 +62,7 @@ export default function Opinion() {
             <FaStar key={i} className="star-icon" />
           ))}
         </div>
-
       </div>
-
     </section>
   );
 }

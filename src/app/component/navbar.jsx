@@ -1,19 +1,13 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
-
-const labels = {
-  home: 'Home',
-  minu: 'Minu',
-  findFood: 'Find',
-  feedback: 'Feedback',
-  subscribe: 'Subscribe',
-};
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations("navbar");
 
   return (
     <nav className="navbar">
@@ -29,11 +23,11 @@ export default function Navbar() {
         </div>
 
         <div className={`menu ${menuOpen ? "open" : ""}`}>
-          <a href="#home">{labels.home}</a>
-          <a href="#minu">{labels.minu}</a>
-          <a href="#find">{labels.findFood}</a>
-          <a href="#feedback">{labels.feedback}</a>
-          <a href="#subscribe">{labels.subscribe}</a>
+          <a href="#home">{t("home")}</a>
+          <a href="#menu">{t("menu")}</a>
+          <a href="#find">{t("findFood")}</a>
+          <a href="#feedback">{t("feedback")}</a>
+          <a href="#subscribe">{t("subscribe")}</a>
         </div>
 
         <div className="icons">
@@ -44,7 +38,7 @@ export default function Navbar() {
             aria-label="Toggle menu"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
             </svg>
           </button>
@@ -53,3 +47,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

@@ -1,0 +1,97 @@
+{
+    "common": {
+        "welcome": "Welcome",
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
+      },
+    "navbar":{
+        "home": "Home",
+        "menu": "Menu",
+        "findFood": "Find",
+        "feedback": "Feedback",
+        "subscribe": "Subscribe"
+      },
+      
+    "Menu": {
+      "checkCategories": "Check Categories",
+      "categories": {
+        "seaFood": "Sea Food",
+        "roastFood": "Roast Food",
+        "fastFood": "Fast Food",
+        "ricePasta": "Rice and Pasta",
+        "dessert": "Dessert",
+        "hotDrinks": "Hot Drinks",
+        "coldDrinks": "Cold Drinks"
+      },
+      "items": {
+        "fishDish": "Fish Dish",
+        "sushi": "Sushi",
+        "stickFish": "Stick Fish",
+        "seaFoodItem": "Sea Food",
+        "mixDish": "Mix Dish",
+        "steak": "Steak",
+        "shishTawook": "Shish Tawook",
+        "shawarma": "Shawarma",
+        "burger": "Burger",
+        "pizza": "Pizza",
+        "kentucky": "Kentucky",
+        "crepe": "Crepe",
+        "rice": "Rice",
+        "basmati": "Basmati",
+        "pasta": "Pasta",
+        "bashamel": "Bashamel",
+        "konafa": "Konafa",
+        "omAli": "Om Ali",
+        "golash": "Golash",
+        "zalabia": "Zalabia",
+        "greenTea": "Green Tea",
+        "coffee": "Coffee",
+        "hotChocolate": "Hot Chocolate",
+        "sahlab": "Sahlab",
+        "orangeJuice": "Orange Juice",
+        "iceCoffee": "Ice Coffee",
+        "milkshake": "Milkshake",
+        "pepsi": "Pepsi"
+      }
+    },
+    "hero": {
+      "badge": "Welcome to Minu",
+      "subtitle1": "Browse fresh seafood, premium grills and quick bites in a clean, easy-to-use interface designed to make choosing your next meal simple and fun.",
+      "subtitle2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam dicta sed quidem sit obcaecati non aliquam quod quae. Iusto soluta distinctio perferendis expedita nam nulla facilis quibusdam possimus vitae nesciunt?"
+    },
+    "find": {
+      "title": "Find Your Favourite Food",
+      "text1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsa explicabo minus repellat atque ipsam. Molestias distinctio, doloribus asperiores blanditiis inventore animi fugiat sequi, aspernatur id accusamus nemo dignissimos suscipit.",
+      "text2": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro ex autem consequuntur assumenda quo, modi tempore sit ipsam maiores! Quasi atque quo amet maiores minus, excepturi minima aliquam officiis harum!",
+      "button": "Find Food"
+    },
+    "opinion": {
+      "title": "What Our Customers Say",
+      "user1Name": "Sarah Johnson",
+      "user1Role": "Food Enthusiast",
+      "user1Text": "I absolutely loved the dishes here! The flavors are authentic and the service is outstanding. Highly recommend to everyone!",
+      "user2Name": "Michael Brown",
+      "user2Role": "Chef & Blogger",
+      "user2Text": "A must-visit restaurant! Every meal feels like a celebration. The ambience is cozy and perfect for family dinners."
+    },
+    "footer": {
+      "home": "Home",
+      "about": "About Us",
+      "process": "Our Process",
+      "services": "Services",
+      "community": "Community",
+      "teamPlans": "Team Plans",
+      "referFriend": "Refer a Friend",
+      "giftCards": "Get Cards",
+      "stayConnected": "Stay Connected",
+      "copyright": "© 2026 Your Company. All rights reserved."
+    },
+    "subscribe": {
+      "title": "Subscribe to Our List Person With Us",
+      "desc1": "Stay updated with the latest news, recipes, and exclusive offers from our restaurant.",
+      "desc2": "Join our community and never miss a delicious moment!",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+}

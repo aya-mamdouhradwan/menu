@@ -1,27 +1,31 @@
 'use client';
+import { useTranslations } from "next-intl";
 
 export default function Subscribe() {
+  const t = useTranslations("subscribe");
 
   return (
     <section className="newsletter-section">
       <div className="newsletter-content">
-        <h2 className="newsletter-title">Subscribe to Our Newsletter</h2>
+        <h2 className="newsletter-title">{t("title")}</h2>
         <p className="newsletter-description">
-          Stay updated with the latest news, recipes, and exclusive offers from our restaurant.
+          {t("desc1")}
         </p>
         <p className="newsletter-description">
-          Join our community and never miss a delicious moment!
+          {t("desc2")}
         </p>
 
         <form className="newsletter-form">
           <input
             type="email"
             name="email"
-            placeholder="Enter your email"
+            placeholder={t("placeholder")}
             className="newsletter-input"
             required
           />
-          <button type="submit" className="newsletter-button">Subscribe</button>
+          <button type="submit" className="newsletter-button">
+            {t("button")}
+          </button>
         </form>
       </div>
     </section>

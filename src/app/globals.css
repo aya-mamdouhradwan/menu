@@ -39,6 +39,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -436,7 +438,7 @@ a {
 
   .navbar .menu.open {
     display: flex;
-    background: black;
+    background: #cfdcf9;
     border-radius: 20px;
     width:30%;
     position: absolute;
@@ -481,10 +483,10 @@ a {
 }
 
 .language-switcher-button:hover {
-  background: rgba(255, 69, 0, 0.2);
-  border-color: #ff4500;
+  background: var(--maincolor);
+  border-color:#257a70;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+  box-shadow: 0 4px 12px var(--maincolor);
 }
 
 .language-switcher-button:active {
@@ -563,13 +565,13 @@ a {
 }
 
 .language-option:hover {
-  background: rgba(255, 69, 0, 0.15);
+  background: var(--maincolor);
   transform: translateX(-4px);
 }
 
 .language-option.active {
-  background: rgba(255, 69, 0, 0.25);
-  color: #ff4500;
+  background: var(--maincolor);
+  color: var(--secondcolor);
   font-weight: 600;
 }
 
@@ -590,7 +592,7 @@ a {
 }
 
 .check-icon {
-  color: #ff4500;
+  color: var(--secondcolor);
   font-weight: bold;
   font-size: 16px;
 }
@@ -630,67 +632,6 @@ a {
   .menu.open {
     display: flex;
   }
-}
-.hero-card{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.4rem 1rem;
-}
-.hero-image img{
- border-radius: 20px;
-}
-.hero-card h1{
-  font-size: 20px;
-  position: relative;
-  bottom:300px;
-  text-align: right;
-}
-.ui-card{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.4rem 1rem;
-}
-.ui-card img{
-  width:40%;
-  height:430px;
-  border-radius: 20px;
-  padding-top: 2px;
-}
-.ui-card h1{
-  text-align: center;
-  border-radius: 999px;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
-  color: var(--maincolor);
-}
-.ui-card button{
-  color:var(--maincolor);
-  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
-  border-radius: 20px;
-  font-size: 20px;
-  padding: 10px;
-  border:none;
-  display: flex;
-  text-align:center ;
-  justify-content: center;
-  margin-top: 30px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(172, 189, 21, 0.824);
-  transition: all 0.3s ease;
-}
-.ui-card button:hover{
-  color:var(--secondcolor);
-  background:var(--maincolor) ;
-  font-size: 22px;
-  padding:12px;
-  
 }
 .ui-card {
   width: 100%;
@@ -752,17 +693,17 @@ a {
   font-size: 16px;
   font-weight: 600;
   border-radius: 50px;
-  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  background: linear-gradient(135deg, var(--maincolor), var(--secondcolor));
   color: #fff;
   border: none;
   cursor: pointer;
-  box-shadow: 0 16px 40px rgba(255, 122, 24, 0.45);
+  box-shadow: 0 16px 40px var(--maincolor);
   transition: all 0.3s ease;
 }
 
 .ui-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 22px 50px rgba(255, 122, 24, 0.55);
+  box-shadow: 0 22px 50px var(--maincolor);
 }
 
 /* موبايل */
@@ -980,7 +921,7 @@ a {
 }
 .foot-container {
   width: 100%;
-  background: linear-gradient(120deg,var(--secondcolor), var(--maincolor));
+  background: linear-gradient(100deg,var(--secondcolor), var(--maincolor));
   color: #fff;
   display: flex;
   flex-wrap: wrap;
@@ -991,17 +932,7 @@ a {
   font-family: 'Poppins', sans-serif;
   position: relative;
 }
-/* ===== Footer Layout ===== */
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 80px; /* مسافة بين الصورة واللينكات */
-  padding: 60px;
-  background: var(--maincolor);
-  color: #fff;
-  flex-wrap: wrap;
-}
+
 
 /* ===== Logo Side ===== */
 .foot-ph {
@@ -1107,6 +1038,7 @@ a {
   .icons {
     justify-content: center;
   }
+ 
 }
 
 

@@ -1,61 +1,62 @@
 'use client';
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-// Categories
+// Categories (ids correspond to Menu.categories keys)
 const categories = [
-  { id: 1, name: "Sea Food", icon: "🦐" },
-  { id: 2, name: "Roast Food", icon: "🍖" },
-  { id: 3, name: "Fast Food", icon: "🍔" },
-  { id: 4, name: "Rice and Pasta", icon: "🍝" },
-  { id: 5, name: "Desert", icon: "🍰" },
-  { id: 6, name: "Hot Drinks", icon: "☕" },
-  { id: 7, name: "Cold Drinks", icon: "🥤" },
+  { id: 1, key: "seaFood", icon: "🦐" },
+  { id: 2, key: "roastFood", icon: "🍖" },
+  { id: 3, key: "fastFood", icon: "🍔" },
+  { id: 4, key: "ricePasta", icon: "🍝" },
+  { id: 5, key: "dessert", icon: "🍰" },
+  { id: 6, key: "hotDrinks", icon: "☕" },
+  { id: 7, key: "coldDrinks", icon: "🥤" },
 ];
 
-// All Menu Data
+// All Menu Data (keys correspond to Menu.items keys)
 const menuData = {
   1: [
-    { id: 1, name: "Fish Dish", price: 300, image: "/food/fish.jpg" },
-    { id: 2, name: "Sushi", price: 200, image: "/food/sochy.jpg" },
-    { id: 3, name: "Stick Fish", price: 250, image: "/food/stickfish.jpg" },
-    { id: 4, name: "Sea Food", price: 300, image: "/food/seafood1.jpg" },
+    { id: 1, key: "fishDish", price: 300, image: "/food/fish.jpg" },
+    { id: 2, key: "sushi", price: 200, image: "/food/sochy.jpg" },
+    { id: 3, key: "stickFish", price: 250, image: "/food/stickfish.jpg" },
+    { id: 4, key: "seaFoodItem", price: 300, image: "/food/seafood1.jpg" },
   ],
   2: [
-    { id: 1, name: "Mix Dish", price: 300, image: "/food/michakil.jpg" },
-    { id: 2, name: "Steak", price: 250, image: "/food/steak.jpg" },
-    { id: 3, name: "Shish Tawook", price: 200, image: "/food/شيش طاووق.jpg" },
-    { id: 4, name: "Shawarma", price: 300, image: "/food/shorma.jpg" },
+    { id: 1, key: "mixDish", price: 300, image: "/food/michakil.jpg" },
+    { id: 2, key: "steak", price: 250, image: "/food/steak.jpg" },
+    { id: 3, key: "shishTawook", price: 200, image: "/food/شيش طاووق.jpg" },
+    { id: 4, key: "shawarma", price: 300, image: "/food/shorma.jpg" },
   ],
   3: [
-    { id: 1, name: "Burger", price: 200, image: "/food/borgar.jpg" },
-    { id: 2, name: "Pizza", price: 150, image: "/food/pizza.jpg" },
-    { id: 3, name: "Kentucky", price: 200, image: "/food/kintaki.jpg" },
-    { id: 4, name: "Crepe", price: 200, image: "/food/shawerma.jpg" },
+    { id: 1, key: "burger", price: 200, image: "/food/borgar.jpg" },
+    { id: 2, key: "pizza", price: 150, image: "/food/pizza.jpg" },
+    { id: 3, key: "kentucky", price: 200, image: "/food/kintaki.jpg" },
+    { id: 4, key: "crepe", price: 200, image: "/food/shawerma.jpg" },
   ],
   4: [
-    { id: 1, name: "Rice", price: 200, image: "/food/kabsa.jpg" },
-    { id: 2, name: "Basmati", price: 200, image: "/food/basmati.jpg" },
-    { id: 3, name: "Pasta", price: 150, image: "/food/makarona1.jpg" },
-    { id: 4, name: "Bashamel", price: 200, image: "/food/مكرونة بالبشاميل.jpg" },
+    { id: 1, key: "rice", price: 200, image: "/food/kabsa.jpg" },
+    { id: 2, key: "basmati", price: 200, image: "/food/basmati.jpg" },
+    { id: 3, key: "pasta", price: 150, image: "/food/makarona1.jpg" },
+    { id: 4, key: "bashamel", price: 200, image: "/food/مكرونة بالبشاميل.jpg" },
   ],
   5: [
-    { id: 1, name: "Konafa", price: 50, image: "/food/konafa.jpg" },
-    { id: 2, name: "Om Ali", price: 60, image: "/food/ام علي🇪🇬.jpg" },
-    { id: 3, name: "Golash", price: 50, image: "/food/glash.jpg" },
-    { id: 4, name: "Zalabia", price: 40, image: "/food/baklawa.jpg" },
+    { id: 1, key: "konafa", price: 50, image: "/food/konafa.jpg" },
+    { id: 2, key: "omAli", price: 60, image: "/food/ام علي🇪🇬.jpg" },
+    { id: 3, key: "golash", price: 50, image: "/food/glash.jpg" },
+    { id: 4, key: "zalabia", price: 40, image: "/food/baklawa.jpg" },
   ],
   6: [
-    { id: 1, name: "Green Tea", price: 40, image: "/food/tea.jpg" },
-    { id: 2, name: "Coffee", price: 50, image: "/food/coffe.jpg" },
-    { id: 3, name: "Hot Chocolate", price: 60, image: "/food/hotchoclite.jpg" },
-    { id: 4, name: "Sahlab", price: 50, image: "/food/sahlab.jpg" },
+    { id: 1, key: "greenTea", price: 40, image: "/food/tea.jpg" },
+    { id: 2, key: "coffee", price: 50, image: "/food/coffe.jpg" },
+    { id: 3, key: "hotChocolate", price: 60, image: "/food/hotchoclite.jpg" },
+    { id: 4, key: "sahlab", price: 50, image: "/food/sahlab.jpg" },
   ],
   7: [
-    { id: 1, name: "Orange Juice", price: 30, image: "/food/orange.jpg" },
-    { id: 2, name: "Ice Coffee", price: 40, image: "/food/icecoffe.jpg" },
-    { id: 3, name: "Milkshake", price: 50, image: "/food/Milkshakes.jpg" },
-    { id: 4, name: "Pepsi", price: 40, image: "/food/neanaa.jpg" },
+    { id: 1, key: "orangeJuice", price: 30, image: "/food/orange.jpg" },
+    { id: 2, key: "iceCoffee", price: 40, image: "/food/icecoffe.jpg" },
+    { id: 3, key: "milkshake", price: 50, image: "/food/Milkshakes.jpg" },
+    { id: 4, key: "pepsi", price: 40, image: "/food/neanaa.jpg" },
   ],
 };
 
@@ -75,12 +76,13 @@ const itemVariants = {
 };
 
 export default function Body() {
+  const tMenu = useTranslations("Menu");
+
   return (
     <div className="body-container">
-      <h1 className="categories-title">Check Categories</h1>
+      <h1 className="categories-title">{tMenu("checkCategories")}</h1>
 
       {/* Categories */}
-      
       <motion.div
             className="items-grid"
             variants={containerVariants}
@@ -104,7 +106,9 @@ export default function Body() {
             }}
           >
             <span className="category-icon">{cat.icon}</span>
-            <span className="category-name">{cat.name}</span>
+            <span className="category-name">
+              {tMenu(`categories.${cat.key}`)}
+            </span>
           </motion.a>
         ))}
       </motion.div>
@@ -123,7 +127,9 @@ export default function Body() {
             amount: 0.2       
           }}
         >
-          <h1 className="section-heading">{cat.name}</h1>
+          <h1 className="section-heading">
+            {tMenu(`categories.${cat.key}`)}
+          </h1>
 
           <motion.div
             className="items-grid"
@@ -141,15 +147,15 @@ export default function Body() {
                 className="item-card"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
-                viewport={{ 
-                  once: false,      
-                  amount: 0.2       
+                viewport={{
+                  once: false,
+                  amount: 0.2,
                 }}
               >
                 <div className="item-card-image">
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt={tMenu(`items.${item.key}`)}
                     fill
                     sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, 25vw"
                     unoptimized
@@ -157,7 +163,9 @@ export default function Body() {
                 </div>
 
                 <div className="item-card-body">
-                  <h4 className="item-name">{item.name}</h4>
+                  <h4 className="item-name">
+                    {tMenu(`items.${item.key}`)}
+                  </h4>
                   <p className="item-price">{item.price} EGP</p>
                 </div>
               </motion.article>
