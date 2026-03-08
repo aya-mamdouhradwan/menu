@@ -8,7 +8,6 @@
     "navbar":{    
         "home": "الرئيسية",
         "menu": "القائمة",
-        "findFood": "ابحث",
         "feedback": "آراء العملاء",
         "subscribe": "اشترك"
    },
@@ -84,8 +83,7 @@
       "teamPlans": "خطط الفرق",
       "referFriend": "دع صديقاً",
       "giftCards": "بطاقات الهدايا",
-      "stayConnected": "ابقَ على تواصل",
-      "copyright": "© 2026 شركتك. جميع الحقوق محفوظة."
+      "stayConnected": "ابقَ على تواصل"
     },
     "subscribe": {
       "title": " اشترك في قائمةالمطعم لدينا",

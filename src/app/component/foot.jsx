@@ -51,8 +51,6 @@ export default function Foot() {
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <h1 className="foot-bottom">{t("copyright")}</h1>
       </footer>
     </motion.div>
   );

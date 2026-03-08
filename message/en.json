@@ -8,7 +8,6 @@
     "navbar":{
         "home": "Home",
         "menu": "Menu",
-        "findFood": "Find",
         "feedback": "Feedback",
         "subscribe": "Subscribe"
       },
@@ -84,8 +83,7 @@
       "teamPlans": "Team Plans",
       "referFriend": "Refer a Friend",
       "giftCards": "Get Cards",
-      "stayConnected": "Stay Connected",
-      "copyright": "© 2026 Your Company. All rights reserved."
+      "stayConnected": "Stay Connected"
     },
     "subscribe": {
       "title": "Subscribe to Our List Person With Us",

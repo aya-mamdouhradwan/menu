@@ -22,12 +22,6 @@ export default function Home() {
         <Body />
       </div>
 
-      <div id="find">
-        <AnimatedSection>
-          <Find />
-        </AnimatedSection>
-      </div>
-
       <div id="feedback">
         <AnimatedSection>
           <Opinion />

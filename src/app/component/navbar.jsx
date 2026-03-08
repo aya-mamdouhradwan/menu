@@ -25,7 +25,6 @@ export default function Navbar() {
         <div className={`menu ${menuOpen ? "open" : ""}`}>
           <a href="#home">{t("home")}</a>
           <a href="#menu">{t("menu")}</a>
-          <a href="#find">{t("findFood")}</a>
           <a href="#feedback">{t("feedback")}</a>
           <a href="#subscribe">{t("subscribe")}</a>
         </div>

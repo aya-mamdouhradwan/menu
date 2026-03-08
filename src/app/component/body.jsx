@@ -1,9 +1,11 @@
 'use client';
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
 
-// Categories (ids correspond to Menu.categories keys)
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+
+// Categories
 const categories = [
   { id: 1, key: "seaFood", icon: "🦐" },
   { id: 2, key: "roastFood", icon: "🍖" },
@@ -14,7 +16,7 @@ const categories = [
   { id: 7, key: "coldDrinks", icon: "🥤" },
 ];
 
-// All Menu Data (keys correspond to Menu.items keys)
+// Menu Data
 const menuData = {
   1: [
     { id: 1, key: "fishDish", price: 300, image: "/food/fish.jpg" },
@@ -60,7 +62,7 @@ const menuData = {
   ],
 };
 
-// Animation
+// Animations
 const containerVariants = {
   hidden: {},
   visible: {
@@ -76,57 +78,58 @@ const itemVariants = {
 };
 
 export default function Body() {
+
   const tMenu = useTranslations("Menu");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   return (
     <div className="body-container">
+
       <h1 className="categories-title">{tMenu("checkCategories")}</h1>
 
       {/* Categories */}
+
       <motion.div
-            className="items-grid"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ 
-              once: false,      
-              amount: 0.2       
-            }}
-          >
+        className="items-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+      >
+
         {categories.map((cat) => (
+
           <motion.a
             key={cat.id}
             href={`#${cat.id}`}
             className="category-card"
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
-            viewport={{ 
-              once: false,      
-              amount: 0.2       
-            }}
           >
+
             <span className="category-icon">{cat.icon}</span>
+
             <span className="category-name">
               {tMenu(`categories.${cat.key}`)}
             </span>
+
           </motion.a>
+
         ))}
+
       </motion.div>
 
-      {/* Dynamic Sections */}
+      {/* Sections */}
+
       {categories.map((cat) => (
+
         <motion.section
           key={cat.id}
           id={cat.id}
           className="category-section"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ 
-            once: false,      
-            amount: 0.2       
-          }}
         >
+
           <h1 className="section-heading">
             {tMenu(`categories.${cat.key}`)}
           </h1>
@@ -136,43 +139,128 @@ export default function Body() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ 
-              once: false,      
-              amount: 0.2       
-            }}
           >
+
             {menuData[cat.id].map((item) => (
+
               <motion.article
                 key={item.id}
                 className="item-card"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
-                viewport={{
-                  once: false,
-                  amount: 0.2,
-                }}
+                onClick={() => setSelectedItem(item)}
               >
+
                 <div className="item-card-image">
+
                   <Image
                     src={item.image}
                     alt={tMenu(`items.${item.key}`)}
                     fill
-                    sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, 25vw"
                     unoptimized
                   />
+
                 </div>
 
                 <div className="item-card-body">
+
                   <h4 className="item-name">
                     {tMenu(`items.${item.key}`)}
                   </h4>
-                  <p className="item-price">{item.price} EGP</p>
+
+                  <p className="item-price">
+                    {item.price} EGP
+                  </p>
+
                 </div>
+
               </motion.article>
+
             ))}
+
           </motion.div>
+
         </motion.section>
+
       ))}
+
+      {/* Popup */}
+
+      <AnimatePresence>
+
+{selectedItem && (
+
+<motion.div
+className="popup-overlay"
+initial={{opacity:0}}
+animate={{opacity:1}}
+exit={{opacity:0}}
+onClick={()=>setSelectedItem(null)}
+>
+
+<motion.div
+className="popup-card"
+initial={{scale:0.8,y:40}}
+animate={{scale:1,y:0}}
+exit={{scale:0.8,y:40}}
+transition={{duration:0.3}}
+onClick={(e)=>e.stopPropagation()}
+>
+
+{/* image */}
+
+<div className="popup-image">
+
+<Image
+src={selectedItem.image}
+alt={tMenu(`items.${selectedItem.key}`)}
+fill
+className="popup-img"
+unoptimized
+/>
+
+</div>
+
+{/* info */}
+
+<div className="popup-content">
+
+<button
+className="popup-close"
+onClick={()=>setSelectedItem(null)}
+>
+✕
+</button>
+
+<h2 className="popup-title">
+{tMenu(`items.${selectedItem.key}`)}
+</h2>
+
+<p className="popup-description">
+Fresh delicious food made with high quality ingredients and served hot.
+</p>
+
+<p className="popup-price">
+{selectedItem.price} EGP
+</p>
+
+{/* quantity */}
+
+
+<button className="add-cart-btn">
+Add To Cart 🛒
+</button>
+
+</div>
+
+</motion.div>
+
+</motion.div>
+
+)}
+
+</AnimatePresence>
+
     </div>
   );
 }
