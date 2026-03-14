@@ -1220,7 +1220,7 @@
 }
 .foot-container {
   width: 100%;
-  background:black;
+  background:rgb(40, 40, 40);
   color: var(--maincolor);
   display: flex;
   flex-wrap: wrap;
