@@ -13,8 +13,11 @@
    },
    
     "Menu": {
-      "checkCategories": "الأقسام",
+      "checkCategories": "تصفح الاصناف",
+      "back":"الرجوع",
+      "close":"خروج",
       "categories": {
+        "AllDesh": "جميع الاطباق",
         "seaFood": "مأكولات بحرية",
         "roastFood": "مشويات",
         "fastFood": "وجبات سريعة",
@@ -44,14 +47,15 @@
         "omAli": "أم علي",
         "golash": "جلاش",
         "zalabia": "زلابية",
-        "greenTea": "شاي أخضر",
+        "greenTea": " شاي",
         "coffee": "قهوة",
         "hotChocolate": "شوكولاتة ساخنة",
         "sahlab": "سحلب",
         "orangeJuice": "عصير برتقال",
         "iceCoffee": "قهوة مثلجة",
         "milkshake": "ميلك شيك",
-        "pepsi": "بيبسي"
+        "pepsi": "بيبسي",
+        "greenTea2": "شاي اخضر"
       }
     },
     "hero": {

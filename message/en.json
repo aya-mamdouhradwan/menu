@@ -14,7 +14,10 @@
       
     "Menu": {
       "checkCategories": "Check Categories",
+      "back":"Back",
+      "close":"Close",
       "categories": {
+        "AllDesh":"All Desh",
         "seaFood": "Sea Food",
         "roastFood": "Roast Food",
         "fastFood": "Fast Food",
@@ -44,14 +47,15 @@
         "omAli": "Om Ali",
         "golash": "Golash",
         "zalabia": "Zalabia",
-        "greenTea": "Green Tea",
+        "greenTea": "Tea",
         "coffee": "Coffee",
         "hotChocolate": "Hot Chocolate",
         "sahlab": "Sahlab",
         "orangeJuice": "Orange Juice",
         "iceCoffee": "Ice Coffee",
         "milkshake": "Milkshake",
-        "pepsi": "Pepsi"
+        "pepsi": "Pepsi",
+        "greenTea2": "Green Tea"
       }
     },
     "hero": {

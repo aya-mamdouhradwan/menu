@@ -7,6 +7,7 @@ import { useState } from "react";
 
 // Categories
 const categories = [
+  { id: 8, key: "AllDesh", icon: "🍽️" },
   { id: 1, key: "seaFood", icon: "🦐" },
   { id: 2, key: "roastFood", icon: "🍖" },
   { id: 3, key: "fastFood", icon: "🍔" },
@@ -65,11 +66,7 @@ const menuData = {
 // Animations
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const itemVariants = {
@@ -78,189 +75,154 @@ const itemVariants = {
 };
 
 export default function Body() {
-
   const tMenu = useTranslations("Menu");
+
   const [selectedItem, setSelectedItem] = useState(null);
+
+  // يبدأ بعرض كل الأطباق
+  const [activeCategory, setActiveCategory] = useState(8);
+
+  // جمع كل الأطباق
+  const allItems = Object.values(menuData).flat();
+
+  // تحديد الأطباق المعروضة
+  const itemsToShow =
+    activeCategory === 8 ? allItems : menuData[activeCategory];
 
   return (
     <div className="body-container">
 
-      <h1 className="categories-title">{tMenu("checkCategories")}</h1>
+      {/* العنوان */}
+      <h1 className="categories-title">
+        {activeCategory === 8
+          ? tMenu("checkCategories")
+          : tMenu(`categories.${categories.find(c => c.id === activeCategory).key}`)}
+      </h1>
 
-      {/* Categories */}
+      {/* زر الرجوع */}
+      {activeCategory !== 8 && (
+        <button
+          className="back-btn"
+          onClick={() => setActiveCategory(8)}
+        >
+          {tMenu("back")}
+        </button>
+      )}
 
+      {/* الأقسام تظهر فقط عند AllDesh */}
+      {activeCategory === 8 && (
+        <motion.div
+          className="categories-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {categories.map(cat => (
+            <motion.button
+              key={cat.id}
+              className="category-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              onClick={() => setActiveCategory(cat.id)}
+            >
+              <span className="category-icon">{cat.icon}</span>
+              <span className="category-name">
+                {tMenu(`categories.${cat.key}`)}
+              </span>
+            </motion.button>
+          ))}
+        </motion.div>
+      )}
+
+      {/* الأطباق */}
       <motion.div
         className="items-grid"
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
       >
-
-        {categories.map((cat) => (
-
-          <motion.a
-            key={cat.id}
-            href={`#${cat.id}`}
-            className="category-card"
+        {itemsToShow.map((item, index) => (
+          <motion.article
+            key={index}
+            className="item-card"
             variants={itemVariants}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
+            onClick={() => setSelectedItem(item)}
           >
+            <div className="item-card-image">
+              <Image
+                src={item.image}
+                alt={tMenu(`items.${item.key}`)}
+                fill
+                unoptimized
+              />
+            </div>
 
-            <span className="category-icon">{cat.icon}</span>
-
-            <span className="category-name">
-              {tMenu(`categories.${cat.key}`)}
-            </span>
-
-          </motion.a>
-
+            <div className="item-card-body">
+              <h4 className="item-name">{tMenu(`items.${item.key}`)}</h4>
+              <p className="item-price">{item.price} EGP</p>
+            </div>
+          </motion.article>
         ))}
-
       </motion.div>
 
-      {/* Sections */}
-
-      {categories.map((cat) => (
-
-        <motion.section
-          key={cat.id}
-          id={cat.id}
-          className="category-section"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-        >
-
-          <h1 className="section-heading">
-            {tMenu(`categories.${cat.key}`)}
-          </h1>
-
-          <motion.div
-            className="items-grid"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-          >
-
-            {menuData[cat.id].map((item) => (
-
-              <motion.article
-                key={item.id}
-                className="item-card"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => setSelectedItem(item)}
-              >
-
-                <div className="item-card-image">
-
-                  <Image
-                    src={item.image}
-                    alt={tMenu(`items.${item.key}`)}
-                    fill
-                    unoptimized
-                  />
-
-                </div>
-
-                <div className="item-card-body">
-
-                  <h4 className="item-name">
-                    {tMenu(`items.${item.key}`)}
-                  </h4>
-
-                  <p className="item-price">
-                    {item.price} EGP
-                  </p>
-
-                </div>
-
-              </motion.article>
-
-            ))}
-
-          </motion.div>
-
-        </motion.section>
-
-      ))}
-
       {/* Popup */}
-
       <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            className="popup-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedItem(null)}
+          >
+            <motion.div
+              className="popup-card"
+              initial={{ scale: 0.8, y: 40 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 40 }}
+              transition={{ duration: 0.3 }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="popup-image">
+                <Image
+                  src={selectedItem.image}
+                  alt={tMenu(`items.${selectedItem.key}`)}
+                  fill
+                  className="popup-img"
+                  unoptimized
+                />
+              </div>
 
-{selectedItem && (
+              <div className="popup-content">
+                <button
+                  className="popup-close"
+                  onClick={() => setSelectedItem(null)}
+                >
+                  ✕
+                </button>
 
-<motion.div
-className="popup-overlay"
-initial={{opacity:0}}
-animate={{opacity:1}}
-exit={{opacity:0}}
-onClick={()=>setSelectedItem(null)}
->
+                <h2 className="popup-title">
+                  {tMenu(`items.${selectedItem.key}`)}
+                </h2>
 
-<motion.div
-className="popup-card"
-initial={{scale:0.8,y:40}}
-animate={{scale:1,y:0}}
-exit={{scale:0.8,y:40}}
-transition={{duration:0.3}}
-onClick={(e)=>e.stopPropagation()}
->
+                <p className="popup-price">
+                  {selectedItem.price} EGP
+                </p>
 
-{/* image */}
-
-<div className="popup-image">
-
-<Image
-src={selectedItem.image}
-alt={tMenu(`items.${selectedItem.key}`)}
-fill
-className="popup-img"
-unoptimized
-/>
-
-</div>
-
-{/* info */}
-
-<div className="popup-content">
-
-<button
-className="popup-close"
-onClick={()=>setSelectedItem(null)}
->
-✕
-</button>
-
-<h2 className="popup-title">
-{tMenu(`items.${selectedItem.key}`)}
-</h2>
-
-<p className="popup-description">
-Fresh delicious food made with high quality ingredients and served hot.
-</p>
-
-<p className="popup-price">
-{selectedItem.price} EGP
-</p>
-
-{/* quantity */}
-
-
-<button className="add-cart-btn">
-Add To Cart 🛒
-</button>
-
-</div>
-
-</motion.div>
-
-</motion.div>
-
-)}
-
-</AnimatePresence>
+                <button
+                  className="close-btn"
+                  onClick={() => setSelectedItem(null)}
+                >
+                  {tMenu("close")}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
 }
+
