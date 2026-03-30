@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 
 // Categories
 const categories = [
@@ -20,209 +20,181 @@ const categories = [
 // Menu Data
 const menuData = {
   1: [
-    { id: 1, key: "fishDish", price: 300, image: "/food/fish.jpg" },
-    { id: 2, key: "sushi", price: 200, image: "/food/sochy.jpg" },
-    { id: 3, key: "stickFish", price: 250, image: "/food/stickfish.jpg" },
-    { id: 4, key: "seaFoodItem", price: 300, image: "/food/seafood1.jpg" },
+    { id: 101, key: "fishDish", price: 300, image: "/food/fish.jpg" },
+    { id: 102, key: "sushi", price: 200, image: "/food/sochy.jpg" },
+    { id: 103, key: "stickFish", price: 250, image: "/food/stickfish.jpg" },
+    { id: 104, key: "seaFoodItem", price: 300, image: "/food/seafood1.jpg" },
   ],
   2: [
-    { id: 1, key: "mixDish", price: 300, image: "/food/michakil.jpg" },
-    { id: 2, key: "steak", price: 250, image: "/food/steak.jpg" },
-    { id: 3, key: "shishTawook", price: 200, image: "/food/شيش طاووق.jpg" },
-    { id: 4, key: "shawarma", price: 300, image: "/food/shorma.jpg" },
+    { id: 201, key: "mixDish", price: 300, image: "/food/michakil.jpg" },
+    { id: 202, key: "steak", price: 250, image: "/food/steak.jpg" },
+    { id: 203, key: "shishTawook", price: 200, image: "/food/شيش طاووق.jpg" },
+    { id: 204, key: "shawarma", price: 300, image: "/food/shorma.jpg" },
   ],
   3: [
-    { id: 1, key: "burger", price: 200, image: "/food/borgar.jpg" },
-    { id: 2, key: "pizza", price: 150, image: "/food/pizza.jpg" },
-    { id: 3, key: "kentucky", price: 200, image: "/food/kintaki.jpg" },
-    { id: 4, key: "crepe", price: 200, image: "/food/shawerma.jpg" },
+    { id: 301, key: "burger", price: 200, image: "/food/borgar.jpg" },
+    { id: 302, key: "pizza", price: 150, image: "/food/pizza.jpg" },
+    { id: 303, key: "kentucky", price: 200, image: "/food/kintaki.jpg" },
+    { id: 304, key: "crepe", price: 200, image: "/food/shawerma.jpg" },
   ],
   4: [
-    { id: 1, key: "rice", price: 200, image: "/food/kabsa.jpg" },
-    { id: 2, key: "basmati", price: 200, image: "/food/basmati.jpg" },
-    { id: 3, key: "pasta", price: 150, image: "/food/makarona1.jpg" },
-    { id: 4, key: "bashamel", price: 200, image: "/food/مكرونة بالبشاميل.jpg" },
+    { id: 401, key: "rice", price: 200, image: "/food/kabsa.jpg" },
+    { id: 402, key: "basmati", price: 200, image: "/food/basmati.jpg" },
+    { id: 403, key: "pasta", price: 150, image: "/food/makarona1.jpg" },
+    { id: 404, key: "bashamel", price: 200, image: "/food/مكرونة بالبشاميل.jpg" },
   ],
   5: [
-    { id: 1, key: "konafa", price: 50, image: "/food/konafa.jpg" },
-    { id: 2, key: "omAli", price: 60, image: "/food/ام علي🇪🇬.jpg" },
-    { id: 3, key: "golash", price: 50, image: "/food/glash.jpg" },
-    { id: 4, key: "zalabia", price: 40, image: "/food/baklawa.jpg" },
+    { id: 501, key: "konafa", price: 50, image: "/food/konafa.jpg" },
+    { id: 502, key: "omAli", price: 60, image: "/food/ام علي🇪🇬.jpg" },
+    { id: 503, key: "golash", price: 50, image: "/food/glash.jpg" },
+    { id: 504, key: "zalabia", price: 40, image: "/food/baklawa.jpg" },
   ],
   6: [
-    { id: 1, key: "greenTea", price: 40, image: "/food/tea.jpg" },
-    { id: 2, key: "coffee", price: 50, image: "/food/coffe.jpg" },
-    { id: 3, key: "hotChocolate", price: 60, image: "/food/hotchoclite.jpg" },
-    { id: 4, key: "sahlab", price: 50, image: "/food/sahlab.jpg" },
+    { id: 601, key: "greenTea", price: 40, image: "/food/tea.jpg" },
+    { id: 602, key: "coffee", price: 50, image: "/food/coffe.jpg" },
+    { id: 603, key: "hotChocolate", price: 60, image: "/food/hotchoclite.jpg" },
+    { id: 604, key: "sahlab", price: 50, image: "/food/sahlab.jpg" },
   ],
   7: [
-    { id: 1, key: "orangeJuice", price: 30, image: "/food/orange.jpg" },
-    { id: 2, key: "iceCoffee", price: 40, image: "/food/icecoffe.jpg" },
-    { id: 3, key: "milkshake", price: 50, image: "/food/Milkshakes.jpg" },
-    { id: 4, key: "pepsi", price: 40, image: "/food/neanaa.jpg" },
+    { id: 701, key: "orangeJuice", price: 30, image: "/food/orange.jpg" },
+    { id: 702, key: "iceCoffee", price: 40, image: "/food/icecoffe.jpg" },
+    { id: 703, key: "milkshake", price: 50, image: "/food/Milkshakes.jpg" },
+    { id: 704, key: "pepsi", price: 40, image: "/food/neanaa.jpg" },
   ],
 };
 
-// Animations
+// Animation Variants
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+  },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, y: 40, scale: 0.95, filter: "blur(4px)" },
+  visible: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export default function Body() {
   const tMenu = useTranslations("Menu");
-
   const [selectedItem, setSelectedItem] = useState(null);
-
-  // يبدأ بعرض كل الأطباق
   const [activeCategory, setActiveCategory] = useState(8);
+  const [startAnimation, setStartAnimation] = useState(false);
 
-  // جمع كل الأطباق
-  const allItems = Object.values(menuData).flat();
+  useEffect(() => {
+    const timer = setTimeout(() => setStartAnimation(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // تحديد الأطباق المعروضة
-  const itemsToShow =
-    activeCategory === 8 ? allItems : menuData[activeCategory];
+  useEffect(() => {
+    setStartAnimation(false);
+    const timer = setTimeout(() => setStartAnimation(true), 150);
+    return () => clearTimeout(timer);
+  }, [activeCategory]);
+
+  const allItems = Object.values(menuData).flatMap(cat => cat);
+  const itemsToShow = activeCategory === 8 ? allItems : menuData[activeCategory] || [];
 
   return (
-    <div className="body-container">
+    <MotionConfig reducedMotion="never">
+      <div className="body-container">
+        <h1 className="categories-title">
+          {activeCategory === 8
+            ? tMenu("checkCategories")
+            : tMenu(`categories.${categories.find(c => c.id === activeCategory)?.key}`)}
+        </h1>
 
-      {/* العنوان */}
-      <h1 className="categories-title">
-        {activeCategory === 8
-          ? tMenu("checkCategories")
-          : tMenu(`categories.${categories.find(c => c.id === activeCategory).key}`)}
-      </h1>
+        {activeCategory !== 8 && (
+          <button className="back-btn" onClick={() => setActiveCategory(8)}>
+            {tMenu("back")}
+          </button>
+        )}
 
-      {/* زر الرجوع */}
-      {activeCategory !== 8 && (
-        <button
-          className="back-btn"
-          onClick={() => setActiveCategory(8)}
-        >
-          {tMenu("back")}
-        </button>
-      )}
-
-      {/* الأقسام تظهر فقط عند AllDesh */}
-      {activeCategory === 8 && (
+        {/* Categories */}
         <motion.div
           className="categories-grid"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={startAnimation ? "visible" : "hidden"}
         >
           {categories.map(cat => (
             <motion.button
               key={cat.id}
               className="category-card"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.06, boxShadow: "0px 8px 20px rgba(0,0,0,0.15)" }}
               onClick={() => setActiveCategory(cat.id)}
             >
               <span className="category-icon">{cat.icon}</span>
-              <span className="category-name">
-                {tMenu(`categories.${cat.key}`)}
-              </span>
+              <span className="category-name">{tMenu(`categories.${cat.key}`)}</span>
             </motion.button>
           ))}
         </motion.div>
-      )}
 
-      {/* الأطباق */}
-      <motion.div
-        className="items-grid"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {itemsToShow.map((item, index) => (
-          <motion.article
-            key={index}
-            className="item-card"
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            onClick={() => setSelectedItem(item)}
-          >
-            <div className="item-card-image">
-              <Image
-                src={item.image}
-                alt={tMenu(`items.${item.key}`)}
-                fill
-                unoptimized
-              />
-            </div>
+        {/* Items */}
+        {itemsToShow.length === 0 && <p className="no-items">لا توجد أطباق في هذا القسم حالياً.</p>}
 
-            <div className="item-card-body">
-              <h4 className="item-name">{tMenu(`items.${item.key}`)}</h4>
-              <p className="item-price">{item.price} EGP</p>
-            </div>
-          </motion.article>
-        ))}
-      </motion.div>
-
-      {/* Popup */}
-      <AnimatePresence>
-        {selectedItem && (
-          <motion.div
-            className="popup-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedItem(null)}
-          >
-            <motion.div
-              className="popup-card"
-              initial={{ scale: 0.8, y: 40 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 40 }}
-              transition={{ duration: 0.3 }}
-              onClick={e => e.stopPropagation()}
+        <motion.div
+          key={activeCategory}
+          className="items-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate={startAnimation ? "visible" : "hidden"}
+        >
+          {itemsToShow.map(item => (
+            <motion.article
+              key={item.id}
+              className="item-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03, boxShadow: "0px 10px 25px rgba(0,0,0,0.2)" }}
+              onClick={() => setSelectedItem(item)}
             >
-              <div className="popup-image">
-                <Image
-                  src={selectedItem.image}
-                  alt={tMenu(`items.${selectedItem.key}`)}
-                  fill
-                  className="popup-img"
-                  unoptimized
-                />
+              <div className="item-card-image">
+                <Image src={item.image} alt={tMenu(`items.${item.key}`)} fill style={{ objectFit: "cover" }} unoptimized />
               </div>
-
-              <div className="popup-content">
-                <button
-                  className="popup-close"
-                  onClick={() => setSelectedItem(null)}
-                >
-                  ✕
-                </button>
-
-                <h2 className="popup-title">
-                  {tMenu(`items.${selectedItem.key}`)}
-                </h2>
-
-                <p className="popup-price">
-                  {selectedItem.price} EGP
-                </p>
-
-                <button
-                  className="close-btn"
-                  onClick={() => setSelectedItem(null)}
-                >
-                  {tMenu("close")}
-                </button>
+              <div className="item-card-body">
+                <h4 className="item-name">{tMenu(`items.${item.key}`)}</h4>
+                <p className="item-price">{item.price} EGP</p>
               </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        {/* Popup */}
+        <AnimatePresence>
+          {selectedItem && (
+            <motion.div
+              className="popup-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedItem(null)}
+            >
+              <motion.div
+                className="popup-card"
+                initial={{ scale: 0.85, y: 30 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.85, y: 30 }}
+                transition={{ duration: 0.3 }}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="popup-image">
+                  <Image src={selectedItem.image} alt={tMenu(`items.${selectedItem.key}`)} fill style={{ objectFit: "cover" }} unoptimized />
+                </div>
+                <div className="popup-content">
+                  <button className="popup-close" onClick={() => setSelectedItem(null)}>✕</button>
+                  <h2 className="popup-title">{tMenu(`items.${selectedItem.key}`)}</h2>
+                  <p className="popup-price">{selectedItem.price} EGP</p>
+                  <button className="close-btn" onClick={() => setSelectedItem(null)}>
+                    {tMenu("close")}
+                  </button>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-    </div>
+          )}
+        </AnimatePresence>
+      </div>
+    </MotionConfig>
   );
 }
-

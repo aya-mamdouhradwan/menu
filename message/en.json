@@ -76,7 +76,14 @@
       "user1Text": "I absolutely loved the dishes here! The flavors are authentic and the service is outstanding. Highly recommend to everyone!",
       "user2Name": "Michael Brown",
       "user2Role": "Chef & Blogger",
-      "user2Text": "A must-visit restaurant! Every meal feels like a celebration. The ambience is cozy and perfect for family dinners."
+      "user2Text": "A must-visit restaurant! Every meal feels like a celebration. The ambience is cozy and perfect for family dinners.",
+      
+      "user3Name":"Anna Rony",
+      "user3Role":"love food",
+      "user3Text":"The meals here are very delicious. This place must always be visited",
+      "user4Name":"Billa Jaik",
+      "user4Role":"good chif",
+      "user4Text":"The meals here are very delicious. This place must always be visited"
     },
     "footer": {
       "home": "Home",

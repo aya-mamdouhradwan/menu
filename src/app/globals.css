@@ -107,25 +107,33 @@
   margin-top: 0.5rem;
 }
 
-
-
 @media (max-width: 768px) {
   .hero-card {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 1.5rem 1.25rem;
+    grid-template-columns: 1fr;
+    padding: 1.2rem 1rem;
+    gap: 6px; /* تقليل المسافة بين العناصر */
   }
 
   .hero-word {
     text-align: center;
     align-items: center;
+    gap: 4px; /* تقارب النصوص */
   }
 
   .hero-badge {
     align-self: center;
+    margin-bottom: 4px;
   }
 
   .hero-title {
     font-size: 1.7rem;
+    line-height: 1.2; /* تقليل المسافة بين السطور */
+    margin: 4px 0;
+  }
+
+  .hero-word p {
+    margin: 2px 0; /* إزالة المسافات الكبيرة بين الفقرات */
+    line-height: 1.3;
   }
 }
 
@@ -230,7 +238,7 @@
 
   .category-card {
     padding: 10px;
-    min-height: 50px;
+    min-height: 60px;
     font-size: 0.85rem;
   }
 
@@ -344,6 +352,63 @@
 }
 
 /* ===== Responsive ===== */
+/* ====== GRID ====== */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* ====== CARD ====== */
+.item-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ====== IMAGE CONTAINER ====== */
+.item-card-image {
+  position: relative;
+  width: 100%;
+  height: 180px; /* 👈 مهم جداً */
+  overflow: hidden;
+}
+
+/* ====== IMAGE ====== */
+.item-card-image img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.item-card:hover .item-card-image img {
+  transform: scale(1.05);
+}
+
+/* ====== BODY ====== */
+.item-card-body {
+  padding: 1rem;
+}
+
+.item-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.item-price {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ====== 📱 MOBILE ====== */
 @media (max-width: 768px) {
   .items-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -354,8 +419,12 @@
     max-width: 160px;
   }
 
+  .item-card-image {
+    height: 130px; /* 👈 أهم تعديل يخلي الصورة واضحة */
+  }
+
   .item-card-body {
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem;
   }
 
   .item-name {
@@ -364,6 +433,25 @@
 
   .item-price {
     font-size: 0.95rem;
+  }
+}
+
+/* ====== 📱 SMALL MOBILE ====== */
+@media (max-width: 480px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item-card-image {
+    height: 160px;
+  }
+
+  .item-name {
+    font-size: 0.9rem;
+  }
+
+  .item-price {
+    font-size: 0.85rem;
   }
 }
 
@@ -536,28 +624,42 @@
   
   /* mobile */
   
-  @media(max-width:800px){
+  @media (max-width:800px){
+
+    .popup-card{
+      flex-direction: column !important;
+      width: 90% !important;
+      max-width: 360px !important;
+      margin: 40px auto !important;
+      position: relative !important;
+    }
   
-  .popup-card{
-  flex-direction:column;
-  }
+    .popup-image{
+      width: 100% !important;
+      height: 180px !important;
+      object-fit: cover !important;
+      display: block;
+    }
   
-  .popup-image{
-  width:100%;
-  height:300px;
-  }
+    .popup-content{
+      width: 100% !important;
+      padding: 15px !important;
+    }
   
-  .popup-content{
-  width:100%;
-  padding:25px;
-  }
+    .popup-close{
+      position: absolute !important;
+      top: 10px !important;
+      right: 30px !important;
+      z-index: 999 !important;
+    }
+    .close-btn{
+      width: 50%;
+      display: block;
+      margin: auto;
+    }
   
   }
 
-/* Navbar - ثابت في أعلى الصفحة */
-/* ===== Navbar صغير وشفاف ===== */
-/* ===== Navbar احترافي وشفاف ===== */
-/* ===== Navbar احترافي ومعدل الموقع ===== */
 .navbar {
   position: fixed;
   top: 10px; /* نقل النافبار لأسفل شوية */
@@ -699,12 +801,13 @@
 
   .navbar .menu.open {
     display: flex;
+    background: rgb(231, 158, 102);
   }
 
   .navbar .menu a {
     padding: 0.5rem 0.75rem;
     width: 100%;
-    text-align: left;
+    text-align:center;
     font-size: 0.9rem;
   }
 
@@ -713,6 +816,70 @@
   }
 }
 /* Language Switcher - Modern Design */
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1a1a1a; /* خلفية القائمة */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 6px 0;
+  max-width: 220px; /* الحد الأقصى للقائمة لتناسب النصوص الطويلة */
+  width: auto;      /* عرض ديناميكي حسب المحتوى */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  animation: slideDown 0.3s ease;
+  overflow: visible;
+  white-space: nowrap;
+  z-index: 1001;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;  /* مساحة مريحة للنصوص الطويلة */
+  min-height: 45px;    /* ارتفاع مناسب لأي لغة */
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-align: right;
+  white-space: nowrap;
+  justify-content: flex-end; /* لضمان ظهور النصوص كاملة على اليمين */
+}
+
+.language-option:hover {
+  background: var(--maincolor);
+  color: var(--secondcolor);
+  transform: translateX(-4px);
+}
+
+.language-option.active {
+  background: var(--maincolor);
+  color: var(--secondcolor);
+  font-weight: 600;
+}
+
+.language-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.language-name {
+  flex: 1;
+  text-align: right;
+}
+
+.check-icon {
+  color: var(--secondcolor);
+  font-weight: bold;
+  font-size: 16px;
+}
 .language-switcher {
   position: relative;
   z-index: 1000;
@@ -722,27 +889,29 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--maincolor);
+  background: var(--maincolor);         /* اللون الأساسي للزر */
+  color: var(--secondcolor);            /* لون النص */
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--secondcolor);
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
   font-weight: 600;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);          /* خلفية شفافة قليلاً */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* ظل خفيف احترافي */
 }
 
 .language-switcher-button:hover {
-  background: var(--maincolor);
-  border-color:#257a70;
+  background: var(--text-secondary);                  /* لون hover احترافي */
+  color: var(--maincolor);                        /* لون النص على hover */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--maincolor);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25); /* ظل أكبر عند hover */
 }
 
 .language-switcher-button:active {
   transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .language-switcher-button:disabled {
@@ -773,98 +942,76 @@
 .chevron-icon.open {
   transform: rotate(180deg);
 }
+@media (max-width: 768px) {
+.language-switcher {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  z-index: 200;
+  flex-shrink: 0;
+}
 
+/* زر عرض اللغة */
+.language-switcher-button {
+  width: auto;            
+  min-width: 80px;        /* الحد الأدنى */
+  max-width: 200px;       /* الحد الأقصى */
+  padding: 6px 16px;      
+  font-size: 13px;
+  background-color: #ff6600; 
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;    
+  text-align: center;     
+  flex-shrink: 0;         
+  overflow: hidden;       
+  text-overflow: ellipsis; 
+  transition: all 0.3s ease;
+}
+
+.language-switcher-button:hover {
+  background-color: #e65500;
+}
+
+/* قائمة اللغة */
 .language-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 180px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  animation: slideDown 0.3s ease;
-  overflow: hidden;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.language-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 12px 16px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+  top: 100%;          /* أسفل الزر */
+  right: 0;            /* تثبيت على اليمين دائمًا */
+  max-width: 150px;    /* الحد الأقصى للعرض */
+  background-color: #1a1a1a;
   border-radius: 8px;
+  padding: 0.25rem 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  z-index: 250;
+  overflow: hidden;
+  white-space: nowrap; /* منع كسر النص */
+}
+
+/* خيارات اللغة */
+.language-dropdown a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;     
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: all 0.2s ease;
-  font-size: 14px;
-  text-align: right;
 }
 
-.language-option:hover {
-  background: var(--maincolor);
-  transform: translateX(-4px);
+.language-dropdown a:hover {
+  background-color: #e65500;
 }
 
-.language-option.active {
-  background: var(--maincolor);
-  color: var(--secondcolor);
-  font-weight: 600;
+/* إخفاء كود اللغة */
+.language-code {
+  display: none;
 }
-
-.language-option:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.language-flag {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.language-name {
-  flex: 1;
-  text-align: right;
-}
-
-.check-icon {
-  color: var(--secondcolor);
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* Responsive Language Switcher */
-@media (max-width: 768px) {
-  .language-dropdown {
-    right: 0;
-    left: auto;
-    min-width: 160px;
-  }
-  
-  .language-switcher-button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-  
-  .language-code {
-    display: none;
-  }
 }
 
 /* Responsive Navbar */
@@ -1093,12 +1240,18 @@
   .opinion-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
+    max-width: 900px;       /* تحديد أقصى عرض للبوكس */
+    margin: 0 auto;         /* لتوسيطه في الصفحة */
   }
 }
 
 @media (max-width: 768px) {
   .opinion-section {
     padding: 70px 20px;
+  }
+
+  .opinion-grid {
+    max-width: 700px;       /* تصغير البوكس على التابلت */
   }
 
   .opinion-card {
@@ -1110,6 +1263,8 @@
   .opinion-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+    max-width: 90%;         /* تصغير البوكس على الموبايل */
+    margin: 0 auto;         /* يبقى في المنتصف */
   }
 
   .opinion-card {
@@ -1197,25 +1352,43 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* عنوان ونص النشرة */
   .newsletter-title {
     font-size: 28px;
+    width:95%;
+    text-align: center;      /* توسيط العنوان */
+    margin-bottom: 5px;      /* تقليل المسافة أسفل العنوان */
   }
 
   .newsletter-description {
     font-size: 15px;
+    width:95%;
+    text-align: center;      /* توسيط النص */
+    margin-bottom: 5px;     /* تقليل المسافة أسفل الوصف */
   }
 
+  /* الفورم */
   .newsletter-form {
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;                /* مسافة أصغر بين الحقول */
+    align-items: center;     /* توسيط الحقول والأزرار */
   }
 
+  /* حقل الإدخال */
   .newsletter-input {
-    width: 100%;
+    width: 80%;              /* أقل من كامل الشاشة */
+    max-width: 400px;        /* الحد الأقصى للعرض */
+    padding: 10px;
+    box-sizing: border-box;
   }
 
+  /* زر الاشتراك */
   .newsletter-button {
-    width: 100%;
+    width: 60%;              /* أصغر من الحقل */
+    max-width: 250px;        /* الحد الأقصى للعرض */
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
   }
 }
 .foot-container {
@@ -1318,19 +1491,18 @@
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 50px;
+    gap: 20px;
   }
 
   .links {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2px;
   }
 
   .icons {
-    justify-content: center;
+    margin-right: 50px;
   }
  
 }

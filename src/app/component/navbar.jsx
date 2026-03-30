@@ -30,8 +30,7 @@ export default function Navbar() {
         </div>
 
         <div className="icons">
-          <LanguageSwitcher />
-          <button
+        <button
             type="button"
             className="menu-toggle block md:hidden"
             aria-label="Toggle menu"
@@ -41,6 +40,8 @@ export default function Navbar() {
               <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
             </svg>
           </button>
+          <LanguageSwitcher />
+        
         </div>
       </div>
     </nav>
