@@ -1,24 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap");
+
 :root {
-  /* خلفية عامة */
-  --background: #f5f5f5; /* رمادي فاتح ناعم */
+  /* خلفية عامة — كريمي دافئ يشبه ورق القائمة */
+  --background: #faf6f1;
 
-  /* النصوص الأساسية */
-  --foreground: #333333; /* أسود رمادي للنصوص */
+  /* النصوص الأساسية — بني داكن مريح للقراءة */
+  --foreground: #2a2118;
 
-  /* اللون الأساسي للعناوين والأزرار */
-  --maincolor: #f37021; /* برتقالي داكن جذاب - أزرار وعناوين */
+  /* اللون الأساسي — تراكوتا/طماطم مطبخ يحفز الشهية */
+  --maincolor: #c0452c;
 
-  /* اللون الثانوي لخلفيات الأقسام والبطاقات */
-  --secondcolor: #eeeeee; /* خلفية بطاقات وأقسام */
+  /* لون ثانوي للخلفيات والتدرجات الخفيفة */
+  --secondcolor: #f1e6d9;
 
-  /* خلفية البطاقات */
-  --card-bg: #ffffff; /* أبيض ناصع */
+  /* خلفية البطاقات — أبيض دافئ */
+  --card-bg: #fffdf8;
 
-  /* حدود البطاقات */
-  --border-color: #dddddd; /* حدود خفيفة للبطاقات */
+  /* حدود ناعمة بلون رملي */
+  --border-color: #e8dbd0;
 
   /* نصوص ثانوية */
-  --text-secondary: #666666; /* نص فرعي */
+  --text-secondary: #5c5046;
+
+  /* لمسة ذهبية للتمييز (شارات، أيقونات، تدرجات) */
+  --accent: #b8860b;
+
+  /* تذييل داكن دافئ */
+  --footer-bg: #1e1814;
+
+  /* خطوط: Amiri نص أنيق مقروء — Aref Ruqaa عناوين مزخرفة — Cormorant للاتينية */
+  --font-body: "Amiri", Georgia, "Times New Roman", serif;
+  --font-display: "Aref Ruqaa", "Cormorant Garamond", Georgia, serif;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* عناوين وشارات بخط مزخرف يشبه لوحة المطعم */
+.hero-title,
+.categories-title,
+.section-heading,
+.popup-title,
+.opinion-title,
+.newsletter-title,
+.item-name,
+.foot-container .main {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-feature-settings: "kern" 1;
 }
 
 
@@ -43,21 +82,42 @@
   box-sizing: border-box; /* يشمل البادينج داخل العرض */
 }
 
+/* قصّ outline الهيرو فقط إن لزم — بدون دفع الهيرو لتحت */
+#home {
+  overflow: visible;
+}
 
-/* Hero section */
+/* Hero section — ألوان وخطوط متماسقة مع هوية المطعم */
 .hero-card {
   max-width: 1000px;
-  margin: 2rem auto 3rem;
-  padding: 2rem 1.5rem;
+  width: min(100%, calc(100% - 2.5rem));
+  margin: 0.65rem auto 5rem;
+  padding: 2.2rem 2rem 3rem;
+  overflow: visible;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 2rem;
+  gap: 2.25rem;
   align-items: center;
+  background: linear-gradient(
+    155deg,
+    var(--card-bg) 0%,
+    color-mix(in srgb, var(--secondcolor) 55%, var(--card-bg)) 55%,
+    color-mix(in srgb, var(--maincolor) 6%, var(--card-bg)) 100%
+  );
+  border-radius: 28px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 75%, var(--maincolor) 25%);
+  box-shadow:
+    0 8px 32px color-mix(in srgb, var(--foreground) 7%, transparent),
+    0 1px 0 color-mix(in srgb, var(--card-bg) 60%, white);
 }
 
 .hero-image {
   border-radius: 24px;
   overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 22px 48px color-mix(in srgb, var(--maincolor) 28%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 3px;
 }
 
 .hero-image img {
@@ -71,33 +131,50 @@
   display: flex;
   color: var(--foreground);
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
-.hero-badge {
+/* شارة / عنوان فرعي للهيرو — خط عرضي دافئ */
+.hero-card .hero-badge {
   align-self: flex-start;
-  padding: 0.25rem 0.9rem;
+  margin: 0;
+  padding: 0.45rem 1.2rem;
   border-radius: 999px;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: color-mix(in srgb, var(--secondcolor) 10%, transparent);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  text-transform: none;
   color: var(--maincolor);
-  
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--maincolor) 14%, var(--card-bg)),
+    color-mix(in srgb, var(--accent) 12%, var(--secondcolor))
+  );
+  border: 1px solid color-mix(in srgb, var(--maincolor) 30%, transparent);
 }
 
-.hero-title {
+.hero-card .hero-title {
+  font-family: var(--font-display);
   font-size: 2.2rem;
   line-height: 1.3;
-  font-weight: 800;
-  color: #ac9572;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--foreground) 82%, var(--maincolor));
+  margin: 0;
+  letter-spacing: 0.04em;
 }
 
-.hero-subtitle {
-  font-size: 1.2rem;
-  line-height: 1.7;
- padding-left: 10px;
+/* وصف الهيرو — أميري مقروء بلون ثانوي */
+.hero-card .hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.9vw, 1.2rem);
+  line-height: 1.82;
+  color: var(--text-secondary);
+  max-width: 40ch;
+  margin: 0;
+  padding-inline-start: 4px;
+  padding-inline-end: 0;
 }
 
 .hero-actions {
@@ -110,30 +187,40 @@
 @media (max-width: 768px) {
   .hero-card {
     grid-template-columns: 1fr;
-    padding: 1.2rem 1rem;
-    gap: 6px; /* تقليل المسافة بين العناصر */
+    padding: 1.2rem 1.1rem 2.25rem;
+    margin-top: 0.4rem;
+    margin-bottom: 4.25rem;
+    gap: 1rem;
+    width: min(100%, calc(100% - 1.5rem));
+  }
+
+  .hero-image {
+    margin-bottom: 14px;
   }
 
   .hero-word {
     text-align: center;
     align-items: center;
-    gap: 4px; /* تقارب النصوص */
+    gap: 0.65rem;
   }
 
-  .hero-badge {
+  .hero-card .hero-badge {
     align-self: center;
-    margin-bottom: 4px;
   }
 
-  .hero-title {
-    font-size: 1.7rem;
-    line-height: 1.2; /* تقليل المسافة بين السطور */
-    margin: 4px 0;
+  .hero-card .hero-title {
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .hero-card .hero-subtitle {
+    max-width: 100%;
+    padding-inline: 0;
   }
 
   .hero-word p {
-    margin: 2px 0; /* إزالة المسافات الكبيرة بين الفقرات */
-    line-height: 1.3;
+    margin: 0;
+    line-height: 1.45;
   }
 }
 
@@ -980,11 +1067,12 @@
 .language-dropdown {
   position: absolute;
   top: 100%;          /* أسفل الزر */
-  right: 0;            /* تثبيت على اليمين دائمًا */
-  max-width: 150px;    /* الحد الأقصى للعرض */
+  right: 0;          /* تثبيت على اليمين دائمًا */
+  width: 150px;    /* الحد الأقصى للعرض */
   background-color: #1a1a1a;
   border-radius: 8px;
   padding: 0.25rem 0;
+  gap:0;
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 250;
   overflow: hidden;
@@ -1071,18 +1159,24 @@
   text-align: right; /* هنا التعديل */
 }
 
-.hero-badge {
-  font-size: 34px;
+/* قسم "اعثر علينا" — نفس أسماء الكلاسات، منفصل عن الهيرو الرئيسي */
+.ui-card .hero-badge {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
   font-weight: 700;
-  color: #222;
-  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--foreground) 90%, var(--maincolor));
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
 }
 
-.hero-subtitle {
-  font-size: 17px;
-  line-height: 1.9;
-  color: #555;
+.ui-card .hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
   max-width: 100%;
+  margin: 0 0 0.5rem;
 }
 
 /* الزرار */
@@ -1092,7 +1186,7 @@
   font-size: 16px;
   font-weight: 600;
   border-radius: 50px;
-  background: linear-gradient(135deg, var(--maincolor), var(--secondcolor));
+  background: linear-gradient(135deg, var(--maincolor), color-mix(in srgb, var(--accent) 55%, var(--maincolor)));
   color: #fff;
   border: none;
   cursor: pointer;
@@ -1111,15 +1205,16 @@
     flex-direction: column;
     text-align: center;
   }
-}
+
   .ui-image {
     width: 200px;
     height: 200px;
   }
 
-  .hero-badge {
-    font-size: 28px;
+  .ui-card .hero-badge {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
   }
+}
 
  /* Section العام */
 /* ===== Section Background ===== */
@@ -1393,7 +1488,7 @@
 }
 .foot-container {
   width: 100%;
-  background:rgb(40, 40, 40);
+  background: var(--footer-bg);
   color: var(--maincolor);
   display: flex;
   flex-wrap: wrap;
@@ -1401,7 +1496,7 @@
   align-items: flex-start;
   gap: 10px;
   padding: 40px 60px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   position: relative;
 }
 
